@@ -16,12 +16,32 @@ public class CashDesk {
         boxes[index]++;
     }
 
+    public void addBanknote(int index, int amount) {
+        if (index < 0 || index >= boxes.length) {
+            return;
+        }
+        boxes[index] = boxes[index] + amount;
+    }
+
     public void removeBanknote(int index) {
         if (index < 0 || index >= boxes.length || boxes[index] <= 0) {
             return;
         }
         // boxes[index] = boxes[index] - 1;
         boxes[index]--;
+    }
+
+    public void removeBanknote(int index, int amount) {
+        if (index < 0 || index >= boxes.length || boxes[index] <= 0) {
+            return;
+        }
+        // if (boxes[index] - amount < 0) {
+        // boxes[index] = 0;
+        // } else {
+        // boxes[index] = boxes[index] - amount;
+        // }
+        // boxes[index] = boxes[index] - amount < 0 ? 0 : boxes[index] - amount;
+        boxes[index] = Math.max(boxes[index] - amount, 0);
     }
 
     public double getCashFlow() {
